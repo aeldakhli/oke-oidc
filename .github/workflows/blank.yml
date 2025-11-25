@@ -33,7 +33,7 @@ jobs:
       - name: Check Permissions in Kubernetes
         run: |
           kubectl \
-          --token=$ \
+          --token=${{ steps.create-oidc-token.outputs.IDTOKEN }} \
           --server="https://130.110.112.6:6443" \
           --insecure-skip-tls-verify \
           auth can-i --list
